@@ -28,7 +28,19 @@ concurrency:
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubutntu-latest, windows-latest]
+        include:
+          - os: ubuntu-latest
+            _source: ./pages
+            _site: ./site
+          - os: windows-latest
+            _source: \pages
+            _site: \site
+    
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -37,10 +49,11 @@ jobs:
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
-          source: ./
-          destination: ./_site
+          source: ${{ matrix._source }}
+          destination: ${{ matrix._site }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
+
 
   # Deployment job
   deploy:
