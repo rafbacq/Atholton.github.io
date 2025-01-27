@@ -1,0 +1,13 @@
+$primary-color: #05391a;
+$text-color: #dddddd;
+$font: Sans-Serif;
+
+body {
+    color: $primary-color;
+    font-family: $font;
+
+    p {
+        color: $text-color;
+    }
+}
+
