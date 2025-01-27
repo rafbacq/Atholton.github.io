@@ -25,7 +25,7 @@ Future<int> writeAllSassCompilation(Directory dir, bool doLog, [int errCount = 0
                 errCount++;
             }
         } else if (f is Directory) {
-            writeAllSassCompilation(f, doLog);
+            errCount = await writeAllSassCompilation(f, doLog, errCount);
         }
     }
 
