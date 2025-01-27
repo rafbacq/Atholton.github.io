@@ -1,13 +1,10 @@
 $primary-color: #05391a;
 $text-color: #dddddd;
-$font: Sans-Serif;
+$font: 'Courier New', Courier, monospace;
 
 body {
-    color: $primary-color;
+    background-color: $primary-color;
     font-family: $font;
-
-    p {
-        color: $text-color;
-    }
+    color: $text-color;
 }
 
