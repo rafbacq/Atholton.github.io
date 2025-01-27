@@ -1,7 +1,5 @@
 body {
-  color: #05391a;
-  font-family: Sans-Serif;
-}
-body p {
-  color: #05391a;
+  background-color: #05391a;
+  font-family: "Courier New", Courier, monospace;
+  color: #dddddd;
 }
