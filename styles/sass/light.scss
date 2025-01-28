@@ -1,18 +1,17 @@
-$primary-color: #05391a;
-$text-color: #dddddd;
+$primary-color: #11ad4f;
+$text-color: #000000;
 $font: 'Courier New', Courier, monospace;
 
 @use 'base';
 
-.dark {
+.light {
     @include base.theme($primary-color, $text-color, $font);
 
     .theme-icon-back {
-        background-color: purple;
+        background-color: skyblue;
     }
 
     .theme-circle {
-        background-color: White;
+        background-color: yellow;
     }
 }
-

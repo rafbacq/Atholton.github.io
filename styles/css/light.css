@@ -24,14 +24,14 @@
   transition: 0.5s ease-in-out;
 }
 
-.dark {
-  background-color: #05391a;
-  color: #dddddd;
+.light {
+  background-color: #11ad4f;
+  color: #000000;
   font: "Courier New", Courier, monospace;
 }
-.dark .theme-icon-back {
-  background-color: purple;
+.light .theme-icon-back {
+  background-color: skyblue;
 }
-.dark .theme-circle {
-  background-color: White;
+.light .theme-circle {
+  background-color: yellow;
 }
