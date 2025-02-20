@@ -1,3 +1,16 @@
+function addSwitch() {
+  let container = document.createElement('div')
+  container.innerHTML = `
+  <div class="theme-icon" onclick="bttnChangeTheme()">
+    <div class="theme-icon-back">
+      <div class="theme-circle" id="theme-circle"></div>
+    </div>
+  </div>`
+  document.body.prepend(container)
+}
+
+addSwitch()
+
 const systemIsDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
 const circle = document.getElementById("theme-circle")
