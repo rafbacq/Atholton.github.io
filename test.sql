@@ -1,14 +1,15 @@
 CREATE DATABASE atholtonATCS;
-/*CREATE TABLE teachers(
-    id int NOT NULL,
-    googleID int NOT NULL,
-    firstName varchar(30),
-    curSize int NOT NULL,
-    maxSize int NOT NULL,
-    roomNumber int NOT NULL,
-    className varchar(255),
-    classBio varchar(MAX),
-    PRIMARY KEY (ID)
-)*/
+/* -- @block
+CREATE TABLE teachers (
+    id INT NOT NULL,
+    googleID INT NOT NULL,
+    firstName VARCHAR(30),
+    curSize INT NOT NULL,
+    maxSize INT NOT NULL,
+    roomNumber INT NOT NULL,
+    className VARCHAR(255),
+    classBio TEXT, --fix
+    PRIMARY KEY (id)
+); */
 
 
