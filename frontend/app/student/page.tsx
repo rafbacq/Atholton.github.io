@@ -12,7 +12,7 @@ export default function StudentDashboard() {
         <div className="flex justify-between items-start mb-8">
           <div>
             <h2 className="text-2xl font-normal mb-2">Welcome</h2>
-            <h1 className="text-4xl font-bold">JOHN SMITH</h1>
+            <h1 className="text-4xl font-bold">JOHN ATHOLTON JR</h1>
             <p className="mt-4 font-mono text-2xl">
               TODAY'S DATE: <span className="text-raider-green">MARCH 9, 2025</span>
             </p>
