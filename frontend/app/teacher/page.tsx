@@ -1,3 +1,5 @@
+"use client"
+
 import { MainNav } from "@/components/main-nav"
 import { RequestCard } from "@/components/request-card"
 import { BellSchedule } from "@/components/bell-schedule"
@@ -5,28 +7,28 @@ import { Button } from "@/components/ui/button"
 
 export default function TeacherDashboard() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
       <MainNav userType="teacher" />
 
       <main className="container mx-auto px-6 py-8">
         <div className="flex justify-between items-start mb-8">
           <div>
-            <h2 className="text-2xl font-normal mb-2">Welcome</h2>
-            <h1 className="text-4xl font-bold">MR JOHN ATHOLTON</h1>
-            <p className="mt-4 font-mono text-2xl">
-              TODAY'S DATE: <span className="text-raider-green">MARCH 9, 2025</span>
+            <h2 className="text-2xl font-normal mb-2 text-gray-700 dark:text-gray-300">Welcome</h2>
+            <h1 className="text-4xl font-bold dark:text-white">MR SMITH</h1>
+            <p className="mt-4 font-mono text-2xl dark:text-gray-200">
+              TODAY'S DATE: <span className="text-raider-green dark:text-green-400">MARCH 9, 2025</span>
             </p>
           </div>
 
-          <Button className="bg-raider-green hover:bg-raider-lightgreen text-white text-xl px-8 py-6 h-auto rounded-lg">
+          <Button className="bg-raider-green hover:bg-raider-lightgreen dark:bg-raider-darkgray dark:hover:bg-gray-700 text-white text-xl px-8 py-6 h-auto rounded-lg transition-colors">
             Sign Out
           </Button>
         </div>
 
         <section className="mb-12">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-3xl">MY REQUESTS</h2>
-            <Button className="bg-raider-green hover:bg-raider-lightgreen text-white px-6 py-2 h-auto rounded-lg">
+            <h2 className="text-3xl dark:text-white">MY REQUESTS</h2>
+            <Button className="bg-raider-green hover:bg-raider-lightgreen dark:bg-raider-darkgray dark:hover:bg-gray-700 text-white px-6 py-2 h-auto rounded-lg transition-colors">
               Open Room?
             </Button>
           </div>
@@ -37,28 +39,30 @@ export default function TeacherDashboard() {
             <RequestCard student="Tiffany" room="B125" date="MARCH 26, 2025" status="pending" />
           </div>
           <div className="text-right mt-2">
-            <Button variant="link" className="text-lg underline">
+            <Button
+              variant="link"
+              className="text-lg underline text-raider-green dark:text-green-400 transition-colors"
+            >
               VIEW ALL
             </Button>
           </div>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-3xl mb-4">Teacher DASHBOARD</h2>
-          <div className="bg-white rounded-md shadow-md h-48" />
+          <h2 className="text-3xl mb-4 dark:text-white">TEACHER DASHBOARD</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-md shadow-md h-48 transition-colors duration-300" />
         </section>
 
         <section className="mb-8">
-          <h2 className="text-3xl mb-4">RAIDER NEWS</h2>
-          <div className="bg-white rounded-md shadow-md h-48" />
+          <h2 className="text-3xl mb-4 dark:text-white">RAIDER NEWS</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-md shadow-md h-48 transition-colors duration-300" />
         </section>
 
         <section>
-          <h2 className="text-3xl mb-4">BELL SCHEDULE</h2>
+          <h2 className="text-3xl mb-4 dark:text-white">BELL SCHEDULE</h2>
           <BellSchedule className="shadow-md" />
         </section>
       </main>
     </div>
   )
 }
-

@@ -27,31 +27,31 @@
   }
 
   .dark {
-    --background: 0 0% 3.9%;
+    --background: 0 0% 10%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+    --card: 0 0% 15%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+    --popover: 0 0% 15%;
     --popover-foreground: 0 0% 98%;
     --primary: 142 95% 17%;
     --primary-foreground: 0 0% 98%;
     --secondary: 60 15% 47%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
+    --muted: 0 0% 20%;
     --muted-foreground: 0 0% 63.9%;
     --accent: 225 55% 47%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 79% 36%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
     --ring: 142 95% 17%;
   }
 }
 
 @layer base {
   * {
-    border: var(--border);
+    @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
@@ -65,7 +65,7 @@
 }
 
 .raider-nav {
-  @apply flex items-center justify-between bg-raider-green text-white px-4 py-1 text-xs;
+  @apply flex items-center justify-between bg-raider-green dark:bg-raider-darkgray text-white px-4 py-1 text-xs transition-colors duration-300;
 }
 
 .raider-nav-left {
@@ -77,18 +77,36 @@
 }
 
 .raider-button-green {
-  @apply bg-raider-green text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90;
+  @apply bg-raider-green text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
 }
 
 .raider-button-red {
-  @apply bg-raider-red text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90;
+  @apply bg-raider-red text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
 }
 
 .raider-button-blue {
-  @apply bg-raider-blue text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90;
+  @apply bg-raider-blue text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
 }
 
 .bell-schedule-item {
   @apply text-xs py-0.5;
 }
 
+/* Animation for mobile menu */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-in {
+  animation-name: fade-in;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
