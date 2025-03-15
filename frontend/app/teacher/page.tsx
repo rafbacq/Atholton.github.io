@@ -4,6 +4,7 @@ import { MainNav } from "@/components/main-nav"
 import { RequestCard } from "@/components/request-card"
 import { BellSchedule } from "@/components/bell-schedule"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function TeacherDashboard() {
   return (
@@ -39,12 +40,14 @@ export default function TeacherDashboard() {
             <RequestCard student="Tiffany" room="B125" date="MARCH 26, 2025" status="pending" />
           </div>
           <div className="text-right mt-2">
-            <Button
-              variant="link"
-              className="text-lg underline text-raider-green dark:text-green-400 transition-colors"
-            >
-              VIEW ALL
-            </Button>
+            <Link href="/teacher/all">
+              <Button
+                variant="link"
+                className="text-lg underline text-raider-green dark:text-green-400 transition-colors"
+              >
+                VIEW ALL
+              </Button>
+            </Link>
           </div>
         </section>
 
