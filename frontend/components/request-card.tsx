@@ -34,15 +34,26 @@ export function RequestCard({ student, room, date, status }: RequestCardProps) {
     }
   }
 
+  const getBorderColor = (status: string) => {
+    switch (status) {
+      case "approved":
+        return "border-raider-green dark:border-green-600"
+      case "denied":
+        return "border-raider-red dark:border-red-600"
+      case "pending":
+        return "border-raider-blue dark:border-blue-600"
+      default:
+        return "border-gray-500"
+    }
+  }
+
   return (
-    <div
-      className={`rounded-xl overflow-hidden border-2 border-${status === "approved" ? "raider-green" : status === "denied" ? "raider-red" : "raider-blue"}`}
-    >
-      <div className="p-4 bg-white">
+    <div className={`rounded-xl overflow-hidden border-2 ${getBorderColor(status)} transition-colors duration-300`}>
+      <div className="p-4 bg-white dark:bg-gray-800 transition-colors duration-300">
         <div className="flex justify-between items-start">
           <div>
-            <h3 className="text-2xl font-bold">{student}</h3>
-            <p className="text-xl">{room}</p>
+            <h3 className="text-2xl font-bold dark:text-white">{student}</h3>
+            <p className="text-xl dark:text-gray-300">{room}</p>
           </div>
           <div className={`rounded-full p-1 ${getStatusColor(status)}`}>{getStatusIcon(status)}</div>
         </div>
@@ -51,4 +62,3 @@ export function RequestCard({ student, room, date, status }: RequestCardProps) {
     </div>
   )
 }
-

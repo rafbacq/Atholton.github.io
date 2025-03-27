@@ -18,14 +18,13 @@ export function BellSchedule({ className = "" }: BellScheduleProps) {
   ]
 
   return (
-    <div className={`bg-white p-4 rounded-md ${className}`}>
+    <div className={`bg-white dark:bg-gray-800 p-4 rounded-md ${className} transition-colors duration-300`}>
       {schedule.map((item, index) => (
-        <div key={index} className="flex gap-2 text-sm py-0.5">
-          <span className="min-w-[100px]">{item.period}</span>
+        <div key={index} className="flex gap-2 text-sm py-0.5 dark:text-gray-200">
+          <span className="min-w-[100px] font-medium">{item.period}</span>
           <span>{item.time}</span>
         </div>
       ))}
     </div>
   )
 }
-
