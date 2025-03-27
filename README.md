@@ -53,6 +53,11 @@ Install these additional components via Stack Builder:
 ### Environment Setup
 1. Create a `.env` file in project root with required settings (see `.env.example`)
 2. Never commit `.env` file to git (always add in .gitignore, if it's already there then don't change it pls)
+3. Generate a new Django secret key:
+```python
+# Run this one-liner in terminal to generate secure access key:
+python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
+```
 
 ### Database Setup
 1. Open pgAdmin 4
