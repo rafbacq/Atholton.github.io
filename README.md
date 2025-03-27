@@ -122,6 +122,46 @@ npm run dev
    - Admin panel: http://localhost:8000/admin
    - API: http://localhost:8000/api/
 
+## Roadmap
+
+### Phase 1: Core Models
+- [ ] Create RaiderTimeSession model
+- [ ] Create Attendance tracking model
+- [ ] Create Room management model
+- [ ] Add model relationships
+- [ ] Write model tests
+
+### Phase 2: Authentication
+- [ ] Implement school SSO integration
+- [ ] Create login flow
+- [ ] Set up role-based routing
+- [ ] Add authentication tests
+
+### Phase 3: Teacher Features
+- [ ] Session management UI
+- [ ] Student registration view
+- [ ] Attendance taking interface
+- [ ] Reporting dashboard
+- [ ] Room assignment system
+
+### Phase 4: Student Features
+- [ ] Session browsing interface
+- [ ] Registration system
+- [ ] Schedule viewer
+- [ ] Attendance history
+
+### Phase 5: Admin Tools
+- [ ] User management interface
+- [ ] School-wide reporting
+- [ ] Period configuration
+- [ ] Bulk operations tools
+
+### Phase 6: Optimization
+- [ ] Performance testing
+- [ ] Mobile responsiveness
+- [ ] Accessibility improvements
+- [ ] Documentation updates
+
 ## Testing
 ```bash
 # Frontend
@@ -136,8 +176,18 @@ python manage.py test
 ## Security Notes
 - Keep `.env` file secure and never commit it PLEASE DONT
 - Use environment variables for sensitive data
-- Regular security audits with `npm audit`
-- Keep dependencies updated
+- Regular security audits (npm audit)
+- Keep dependencies updated:
+```bash
+# Update frontend dependencies
+npm update        # Update packages within allowed ranges
+npm outdated      # Check for outdated packages
+npm audit fix     # Fix security vulnerabilities
+
+# Update backend dependencies
+pip list --outdated              # Check for outdated packages
+pip install --upgrade -r requirements.txt  # Update all packages
+```
 
 ## How it works
 
