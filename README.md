@@ -1,9 +1,173 @@
-### Only do once to install dependencies and create project
+# Atholton Raider Time Management Website
 
-## Make sure node.js is installed, do npm -v to ensure it's installed. If on windows, make sure it's in your account's PATH variables
-1. cd frontend
-2. npm install --legacy-peer-deps
-3. npm run dev
-    ctrl + click on the localhost link to see the website preview
+A web application for managing raider time sessions at Atholton High School, built with Next.js and Django.
+The website for managing raider time sessions at Atholton High School, built with Next.js for its access to shadcn and built in backend functionality and Django for backend
 
-4. npm audit regularly to check for vulnerabilities in the dependencies
+## Project Setup
+
+### Prerequisites
+- Node.js (for frontend)
+    - Download Node.js: https://nodejs.org/en/download
+- Python 3.8+ (for backend)
+- PostgreSQL 17+
+    - Download PostgreSQL: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+
+## Frontend Setup
+
+### Initial Setup
+1. Make sure node.js is installed:
+```bash
+node -v  # Check Node.js version
+npm -v   # Check npm version
+```
+
+2. Install dependencies:
+```bash
+cd frontend
+npm install --legacy-peer-deps
+```
+
+### Development
+```bash
+npm run dev     # Start development server
+npm run build   # Create production build
+npm run start   # Start production server
+npm audit       # Check for vulnerabilities
+```
+
+## Backend Setup
+
+### PostgreSQL Installation
+1. Download PostgreSQL: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+2. During installation:
+   - Set a secure password for postgres user
+   - Keep default port (5432)
+   - Install all components when prompted
+
+### Stack Builder Components
+Install these additional components via Stack Builder:
+1. psqlODBC (64 bit) - Database driver
+2. pgAgent - For automated backups
+3. pgBouncer - Connection pooling
+
+### Environment Setup
+1. Create a `.env` file in project root with required settings (see `.env.example`)
+2. Never commit `.env` file to git (always add in .gitignore, if it's already there then don't change it pls)
+
+### Database Setup
+1. Open pgAdmin 4
+2. Create new database named 'atholton_test'
+3. Run migrations:
+```bash
+cd backend
+python manage.py migrate
+```
+
+### Virtual Environment
+```bash
+python -m venv venv              # Create virtual environment
+venv\Scripts\activate            # Activate (Windows) (venv/bin/activate for Mac)
+pip install -r requirements.txt  # Install dependencies
+```
+
+### Django Commands
+```bash
+# Development
+python manage.py runserver          # Start development server
+python manage.py createsuperuser    # Create admin user
+python manage.py makemigrations     # Create database migrations
+python manage.py migrate           # Apply migrations
+
+# Testing
+python manage.py test              # Run all tests
+python manage.py test backend.tests.test_env  # Run specific tests
+
+# Static Files
+python manage.py collectstatic     # Collect static files
+```
+
+## Project Structure
+
+### Frontend (/frontend)
+- `/pages` - Next.js pages and routing
+- `/components` - Reusable React components
+- `/styles` - CSS and styling
+- `/public` - Static assets
+
+### Backend (/backend)
+- `/accounts` - User authentication and profiles
+- `/attendance` - Attendance tracking system
+- `/backend` - Main Django configuration
+- `/tests` - Test cases and stuff
+
+## Development Workflow
+1. Start PostgreSQL service
+2. Start Django backend:
+```bash
+cd backend
+python manage.py runserver
+```
+3. Start Next.js frontend:
+```bash
+cd frontend
+npm run dev
+```
+4. Access:
+   - Frontend: http://localhost:3000
+   - Admin panel: http://localhost:8000/admin
+   - API: http://localhost:8000/api/
+
+## Testing
+```bash
+# Frontend
+cd frontend
+npm test
+
+# Backend
+cd backend
+python manage.py test
+```
+
+## Security Notes
+- Keep `.env` file secure and never commit it PLEASE DONT
+- Use environment variables for sensitive data
+- Regular security audits with `npm audit`
+- Keep dependencies updated
+
+## How it works
+
+### The custom user model
+- Created a custom User model that extends Django's AbstractUser
+- Added role-based authentication with three roles:
+  - ADMIN: School administrators
+  - TEACHER: Teachers who manage raider times
+  - STUDENT: Students who attend raider times
+- Added school-specific fields for user profiles
+
+### The attendance system
+- Implemented a raider time attendance system
+- Added functionality to track attendance for each raider time session
+- Added functionality to view attendance for each raider time session
+
+### Database Configuration
+- Set up PostgreSQL as the database backend
+- Database name: atholton_test
+- Configured for:
+  - Up to 2000 users (scalable)
+  - Secure connections
+  - Connection pooling via pgBouncer
+
+### Testing Framework
+- Environment variable tests:
+  - Secret key length verification
+  - Database connection testing
+  - Security settings validation
+- Test database configuration:
+  - Automatic test database creation
+  - Isolation from production data
+
+### Authentication System
+- I think it's now (somewhat) configured for school account integration
+- Disabled email functionality since not needed
+- Set up console backend for development logging
+- Ready for school SSO integration
