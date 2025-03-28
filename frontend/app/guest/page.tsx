@@ -10,8 +10,9 @@ export default function GuestPage() {
         <div className="bg-black dark:bg-gray-900 text-raider-green dark:text-green-400 p-6 rounded-md shadow-md transition-colors duration-300">
           <div className="space-y-2 mb-6">
             <h1 className="text-xl font-bold">Welcome to Atholton</h1>
-            <h2 className="text-lg font-semibold">Raider Time</h2>
-            <p>Man I hate Yall</p>
+            <h2 className="text-lg font-semibold">Raider Time Lorem</h2>
+            <p>Ipsum Dimsum Din Tal</p>
+            <p>Fung Dih Delor Sit Amet</p>
           </div>
 
           <div className="w-full h-64 relative rounded-md overflow-hidden">
@@ -27,4 +28,3 @@ export default function GuestPage() {
     </main>
   )
 }
-
