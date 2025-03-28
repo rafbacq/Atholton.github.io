@@ -44,16 +44,20 @@ ALLOWED_HOSTS = env('DJANGO_ALLOWED_HOSTS')
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "accounts.apps.AccountsConfig",
-    "attendance.apps.AttendanceConfig",
-    "rest_framework",
-    "corsheaders",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    
+    # Third-party apps
+    'rest_framework',
+    'corsheaders',
+    
+    # Local apps
+    'accounts',  # Custom user model
+    'attendance',  # Attendance tracking
 ]
 
 MIDDLEWARE = [

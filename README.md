@@ -12,6 +12,8 @@ The website for managing raider time sessions at Atholton High School, built wit
 - PostgreSQL 17+
     - Download PostgreSQL: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
 
+** Make sure to git pull origin main periodically or else when you try to push your feature it'll get really messed up because if your local repo is too far behind it'll give you errors
+
 ## Frontend Setup
 
 ### Initial Setup
