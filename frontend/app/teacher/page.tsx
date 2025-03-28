@@ -15,7 +15,7 @@ export default function TeacherDashboard() {
         <div className="flex justify-between items-start mb-8">
           <div>
             <h2 className="text-2xl font-normal mb-2 text-gray-700 dark:text-gray-300">Welcome</h2>
-            <h1 className="text-4xl font-bold dark:text-white">MR ATHOLTON</h1>
+            <h1 className="text-4xl font-bold dark:text-white">MR SMITH</h1>
             <p className="mt-4 font-mono text-2xl dark:text-gray-200">
               TODAY'S DATE: <span className="text-raider-green dark:text-green-400">MARCH 9, 2025</span>
             </p>
