@@ -12,6 +12,7 @@ db.sqlite3
 db.sqlite3-journal
 media/
 
+<<<<<<< HEAD
 # Environment variables (when we make them)
 .env
 .env.local
@@ -20,3 +21,6 @@ media/
 # IDE
 .idea/
 .vscode/
+=======
+.env
+>>>>>>> b983583d6610e68c2e23d3f58aa5c6cac65be280
