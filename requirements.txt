@@ -20,3 +20,4 @@ black>=24.2.0  # Code formatting
 flake8>=7.0.0  # Code linting
 pytest>=8.0.0  # Testing
 pytest-django>=4.8.0  # Django test integration
+requests>=2.31.0  # HTTP client

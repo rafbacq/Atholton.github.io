@@ -1,5 +1,5 @@
 """
-URL configuration for backend project.
+URL configuration for da backend.
 
 The `urlpatterns` list routes URLs to views. More info:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/
@@ -21,4 +21,5 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),
+    path('', include('attendance.urls')),  # Include attendance URLs
 ]

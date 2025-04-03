@@ -33,6 +33,37 @@ class Student(models.Model):
     def __str__(self):
         return f"{self.name} (Grade {self.grade})"
 
+class ClassPeriod(models.Model):
+    """Model for tracking class periods and room assignments"""
+    PERIOD_CHOICES = [
+        (1, 'First Period'),
+        (2, 'Second Period'),
+        (3, 'Third Period'),
+        (4, 'Fourth Period'),
+        ('RT', 'Raider Time'),
+    ]
+    
+    period = models.CharField(max_length=2, choices=PERIOD_CHOICES)
+    teacher = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='teaching_periods'
+    )
+    room_number = models.CharField(max_length=10)
+    capacity = models.IntegerField(default=30)
+    current_enrollment = models.IntegerField(default=0)
+    subject = models.CharField(max_length=100)
+    
+    class Meta:
+        unique_together = ['teacher', 'period']
+        
+    def __str__(self):
+        return f"{self.get_period_display()} - {self.subject} ({self.teacher.get_full_name()})"
+        
+    def is_available(self):
+        """Check if the class has available space"""
+        return self.current_enrollment < self.capacity
+
 class Announcement(models.Model):
     """Announcement model based on existing database structure"""
     timestamp = models.DateTimeField(auto_now=True)

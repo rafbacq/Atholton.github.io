@@ -3,8 +3,12 @@ from django.core.paginator import Paginator
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from .models import Student, Announcement, Notification
-from .serializers import StudentSerializer, AnnouncementSerializer, NotificationSerializer
+from .models import Student, Announcement, Notification, ClassPeriod
+from .serializers import (
+    StudentSerializer, AnnouncementSerializer, 
+    NotificationSerializer, ClassPeriodSerializer
+)
+from django.db.models import F
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -73,5 +77,58 @@ def announcement_list(request):
         'current_page': page,
         'has_next': announcements.has_next(),
         'has_previous': announcements.has_previous()
+    }
+    return Response(data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def class_period_list(request):
+    """API endpoint for listing class periods"""
+    # Get filters from query params
+    period = request.GET.get('period')
+    teacher = request.GET.get('teacher')
+    available_only = request.GET.get('available', '').lower() == 'true'
+    
+    # Start with all class periods
+    class_periods = ClassPeriod.objects.all()
+    
+    # Apply filters
+    if period:
+        class_periods = class_periods.filter(period=period)
+    if teacher:
+        class_periods = class_periods.filter(teacher=teacher)
+    if available_only:
+        class_periods = class_periods.filter(current_enrollment__lt=F('capacity'))
+        
+    # Order by room number
+    class_periods = class_periods.order_by('room_number')
+    
+    # Paginate results
+    page_size = int(request.GET.get('page_size', 25))
+    paginator = Paginator(class_periods, page_size)
+    page = request.GET.get('page', 1)
+    class_periods = paginator.get_page(page)
+    
+    # Serialize data
+    data = {
+        'results': ClassPeriodSerializer(class_periods, many=True).data,
+        'total_pages': paginator.num_pages,
+        'current_page': page,
+        'has_next': class_periods.has_next(),
+        'has_previous': class_periods.has_previous()
+    }
+    return Response(data)
+
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def class_period_detail(request, class_id):
+    """API endpoint for class period details"""
+    class_period = get_object_or_404(ClassPeriod, pk=class_id)
+    students = Student.objects.filter(teacher_period2=class_period.teacher)
+    
+    data = {
+        'class_period': ClassPeriodSerializer(class_period).data,
+        'students': StudentSerializer(students, many=True).data,
+        'available_seats': class_period.capacity - class_period.current_enrollment
     }
     return Response(data)

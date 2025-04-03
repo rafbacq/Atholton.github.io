@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from .models import Student, Announcement, Notification
+from .models import Student, Announcement, Notification, ClassPeriod
 
 User = get_user_model()
 
@@ -20,6 +20,20 @@ class StudentSerializer(serializers.ModelSerializer):
             'phone_num', 'receive_notif', 'teacher', 'teacher_period2',
             'theme', 'temp_teacher'
         )
+
+class ClassPeriodSerializer(serializers.ModelSerializer):
+    teacher = UserSerializer(read_only=True)
+    available_seats = serializers.SerializerMethodField()
+    
+    class Meta:
+        model = ClassPeriod
+        fields = (
+            'id', 'period', 'teacher', 'room_number', 'subject',
+            'capacity', 'current_enrollment', 'available_seats'
+        )
+        
+    def get_available_seats(self, obj):
+        return obj.capacity - obj.current_enrollment
 
 class AnnouncementSerializer(serializers.ModelSerializer):
     teacher = UserSerializer(read_only=True)
