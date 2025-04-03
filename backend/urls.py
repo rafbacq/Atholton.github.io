@@ -1,7 +1,7 @@
 """
-URL Configuration for the Atholton High School Raider Time Management System.
+URL Configurations
 
-This module defines the URL routing for the entire application, connecting URLs
+Defines the URL routing for the entire application, connecting URLs
 to their corresponding views. It serves as the main routing configuration for:
 
 1. API Endpoints:
@@ -28,7 +28,7 @@ Security:
     - Session-based authentication is required for API access
     - Admin interface requires staff privileges
 
-Related Files:
+Related:
     views.py: View implementations
     settings.py: Project settings including URL configuration
     wsgi.py: Web server entry point

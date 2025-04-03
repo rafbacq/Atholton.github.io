@@ -1,13 +1,12 @@
 """
-(I used vscode extension autoDocstring to make these)
-Test script for the Atholton High School Raider Time Management System API.
+test script for API
 
-This script validates the core functionality of the backend API endpoints by:
+Validates the core functionality of the backend API endpoints by:
 1. Authenticating with the server using session-based authentication
 2. Testing protected endpoints for class periods, students, and announcements
 3. Verifying proper CSRF token handling and session management
 
-The script uses the requests library to simulate a web browser session and
+It uses the requests library to simulate a web browser session and
 tests the following endpoints:
 - /api/accounts/login/: Authentication endpoint
 - /api/class-periods/: Class period management
@@ -18,7 +17,7 @@ Usage:
     python test_api.py
 
 Note:
-    Requires a running Django server at http://localhost:8000
+    Requires a running Django server at http://localhost:8000 (make sure it's running) (i made this mistake)
     Uses teacher credentials for authentication
 """
 

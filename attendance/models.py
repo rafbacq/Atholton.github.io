@@ -1,11 +1,11 @@
 """
-Models for the Atholton High School Raider Time Management System.
+Models
 
-This module defines the core data models for managing student attendance,
+Defines the core data models for managing student attendance,
 class periods, and announcements. The system is designed to handle:
 
 1. Class Period Management:
-   - Track periods (1st, 2nd, 3rd, 4th, Raider Time)
+   - Track periods (1st, 2nd, Raider Time, 3rd, 4th)
    - Room assignments and capacity tracking
    - Teacher assignments
    - Current enrollment monitoring
@@ -35,7 +35,7 @@ Database Structure:
    - Automatic enrollment counting
    - Links between Student and User models
 
-Related Files:
+Related:
    - views.py: API endpoints for these models
    - serializers.py: Data serialization
    - admin.py: Admin interface configuration
@@ -81,9 +81,9 @@ class ClassPeriod(models.Model):
     PERIOD_CHOICES = [
         (1, 'First Period'),
         (2, 'Second Period'),
+        ('RT', 'Raider Time'),
         (3, 'Third Period'),
         (4, 'Fourth Period'),
-        ('RT', 'Raider Time'),
     ]
     
     period = models.CharField(max_length=2, choices=PERIOD_CHOICES)

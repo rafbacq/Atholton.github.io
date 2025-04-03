@@ -1,7 +1,7 @@
 """
-Serializers for the Atholton High School Raider Time Management System.
+Serializers
 
-This module handles the conversion of complex data types (models, querysets)
+Handles the conversion of complex data types (models, querysets)
 to and from Python native datatypes that can be rendered into JSON or other
 content types. It provides:
 
@@ -30,7 +30,7 @@ content types. It provides:
    - Related object handling
    - Many-to-many relationship support
 
-Related Files:
+Related:
    - models.py: Database models
    - views.py: API views using these serializers
    - urls.py: URL routing

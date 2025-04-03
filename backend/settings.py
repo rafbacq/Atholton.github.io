@@ -1,7 +1,7 @@
 """
-Django settings for the Atholton High School Raider Time Management System.
+Django settings
 
-This module configures the Django project settings, including:
+Configures the Django project settings, including:
 1. Security Settings:
    - Session management
    - CSRF protection
@@ -40,7 +40,7 @@ Environment Variables:
     ALLOWED_HOSTS: List of allowed hosts
     CORS_ALLOWED_ORIGINS: List of allowed CORS origins
 
-Related Files:
+Related:
     wsgi.py: Web server configuration
     urls.py: URL routing
     asgi.py: Asynchronous server configuration

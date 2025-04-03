@@ -1,8 +1,10 @@
 """
-Authentication views for the Atholton High School Raider Time Management System.
+Authentication Views
 
-This module handles user authentication and session management for both students
-and teachers. It implements secure login with:
+The module handles user authentication and session management for both students
+and teachers.
+
+Implements secure login with:
 - Session-based authentication
 - CSRF protection
 - Account lockout after failed attempts
@@ -20,7 +22,7 @@ Key Components:
 - logout_view: Manages secure user logout
 - User model: Custom user model with role-based permissions
 
-Related Files:
+Related:
 - models.py: Defines the User model
 - serializers.py: Handles data serialization
 - urls.py: Maps URLs to these views

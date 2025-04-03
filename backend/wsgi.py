@@ -1,7 +1,7 @@
 """
-WSGI Configuration for the Atholton High School Raider Time Management System.
+WSGI Configuration
 
-This module serves as the Web Server Gateway Interface (WSGI) entry point for
+Serves as the Web Server Gateway Interface (WSGI) entry point for
 production deployment. It configures the application to work with WSGI-compatible
 web servers like Gunicorn, uWSGI, or Apache with mod_wsgi.
 
@@ -26,7 +26,7 @@ Configuration:
     - MEDIA_ROOT
     - Logging configuration
 
-Related Files:
+Related:
     settings.py: Django project settings
     urls.py: URL routing configuration
     asgi.py: Asynchronous server configuration

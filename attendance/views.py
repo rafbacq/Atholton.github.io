@@ -1,7 +1,7 @@
 """
-API Views for the Atholton High School Raider Time Management System.
+API Views
 
-This module implements the REST API endpoints for managing student attendance,
+Implements the REST API endpoints for managing student attendance,
 class periods, and announcements. The views provide:
 
 1. Student Management:
@@ -37,7 +37,7 @@ Security:
    - Role validation
    - Data access controls
 
-Related Files:
+Related:
    - models.py: Database models
    - serializers.py: Data serialization
    - urls.py: URL routing
