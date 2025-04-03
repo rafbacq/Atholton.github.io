@@ -52,7 +52,7 @@ export default function TeacherAllPage() {
       <MainNav userType="teacher" />
 
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-8 bg-gray-100 dark:bg-gray-800 py-6 px-4 rounded-md">
+        <div className="mb-8 bg-gray-50 dark:bg-gray-900 py-6 px-4 rounded-md">
           <div className="text-center">
             {/* First row: ATHOLTON HIGH SCHOOL */}
             <h1 className="school-title-gradient mb-0 leading-none">ATHOLTON HIGH SCHOOL</h1>
@@ -164,3 +164,4 @@ export default function TeacherAllPage() {
     </div>
   )
 }
+
