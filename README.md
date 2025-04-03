@@ -26,7 +26,7 @@ npm -v   # Check npm version
 2. Install dependencies:
 ```bash
 cd frontend
-npm install 
+npm install
 ```
 
 ### Development
@@ -57,7 +57,7 @@ Install these additional components via Stack Builder:
 2. Never commit `.env` file to git (always add in .gitignore, if it's already there then don't change it pls)
 3. Generate a new Django secret key:
 ```python
-# Run this one-liner in terminal to generate secure access key:
+# Run this in terminal to generate secure access key:
 python -c "from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())"
 ```
 
@@ -73,7 +73,8 @@ python manage.py migrate
 ### Virtual Environment
 ```bash
 python -m venv venv              # Create virtual environment
-venv\Scripts\activate            # Activate (Windows) (venv/bin/activate for Mac)
+venv\Scripts\activate            # Activate (Windows) 
+venv/bin/activate                # Activate (Mac)
 pip install -r requirements.txt  # Install dependencies
 ```
 
