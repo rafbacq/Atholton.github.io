@@ -29,13 +29,20 @@ cd frontend
 npm install
 ```
 
-### Development
+3. Start localhost:
 ```bash
-npm run dev     # Start development server
-npm run build   # Create production build
-npm run start   # Start production server
-npm audit       # Check for vulnerabilities
+cd frontend
+npm run dev
 ```
+### Pages
+- '/" - home login
+- '/login/student' - student login
+- '/login/teacher' - teacher login
+- '/student' - student dashboard
+- '/teacher' - teacher dashboard
+- '/student/all' - student all page
+- '/teacher/all' - teacher all page
+
 
 ## Backend Setup
 
@@ -115,11 +122,7 @@ python manage.py collectstatic     # Collect static files
 cd backend
 python manage.py runserver
 ```
-3. Start localhost:
-```bash
-cd frontend
-npm run dev
-```
+
 4. Access:
    - Frontend: http://localhost:3000
    - Admin panel: http://localhost:8000/admin
