@@ -26,3 +26,4 @@ export function NavigationBar({
     </div>
   )
 }
+

@@ -102,3 +102,4 @@ export function MainNav({ userType = "student" }: MainNavProps) {
     </nav>
   )
 }
+
