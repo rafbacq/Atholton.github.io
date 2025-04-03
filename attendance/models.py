@@ -1,3 +1,46 @@
+"""
+Models for the Atholton High School Raider Time Management System.
+
+This module defines the core data models for managing student attendance,
+class periods, and announcements. The system is designed to handle:
+
+1. Class Period Management:
+   - Track periods (1st, 2nd, 3rd, 4th, Raider Time)
+   - Room assignments and capacity tracking
+   - Teacher assignments
+   - Current enrollment monitoring
+   - Availability checking for room assignments
+
+2. Student Management:
+   - Basic student information (name, grade, email)
+   - Communication preferences
+   - Teacher assignments (primary and period2)
+   - Theme customization
+   - Temporary teacher assignments
+
+3. Announcement System:
+   - School-wide announcements
+   - Teacher-specific announcements
+   - Timestamp tracking
+   - Student notification preferences
+
+4. Notification System:
+   - Message delivery tracking
+   - Student notification preferences
+   - Timestamp management
+
+Database Structure:
+   - Unique constraints on teacher-period combinations
+   - Default room capacity of 30 students
+   - Automatic enrollment counting
+   - Links between Student and User models
+
+Related Files:
+   - views.py: API endpoints for these models
+   - serializers.py: Data serialization
+   - admin.py: Admin interface configuration
+"""
+
 from django.db import models
 from django.conf import settings
 

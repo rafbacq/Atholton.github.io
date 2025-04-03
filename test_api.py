@@ -1,3 +1,27 @@
+"""
+(I used vscode extension autoDocstring to make these)
+Test script for the Atholton High School Raider Time Management System API.
+
+This script validates the core functionality of the backend API endpoints by:
+1. Authenticating with the server using session-based authentication
+2. Testing protected endpoints for class periods, students, and announcements
+3. Verifying proper CSRF token handling and session management
+
+The script uses the requests library to simulate a web browser session and
+tests the following endpoints:
+- /api/accounts/login/: Authentication endpoint
+- /api/class-periods/: Class period management
+- /api/students/: Student information
+- /api/announcements/: School announcements
+
+Usage:
+    python test_api.py
+
+Note:
+    Requires a running Django server at http://localhost:8000
+    Uses teacher credentials for authentication
+"""
+
 import requests
 import json
 from requests.sessions import Session
@@ -5,6 +29,15 @@ from requests.sessions import Session
 BASE_URL = 'http://localhost:8000'
 
 def test_api():
+    """
+    Test the backend API endpoints with proper authentication.
+    
+    Creates a session, handles CSRF tokens, and tests protected endpoints.
+    Prints the results of each API call for verification.
+    
+    Returns:
+        None. Results are printed to stdout.
+    """
     # Create a session to handle cookies
     session = Session()
     
@@ -12,10 +45,10 @@ def test_api():
     session.get(f'{BASE_URL}/api/accounts/login/')
     csrf_token = session.cookies.get('csrftoken')
     
-    # Login
+    # Login with a teacher account
     login_data = {
-        'username': 'admin',
-        'password': 'admin123'
+        'username': 'j..moore',  # Using an existing teacher from our database
+        'password': 'password123'  # This needs to be the correct password
     }
     headers = {
         'X-CSRFToken': csrf_token,

@@ -1,3 +1,31 @@
+"""
+Authentication views for the Atholton High School Raider Time Management System.
+
+This module handles user authentication and session management for both students
+and teachers. It implements secure login with:
+- Session-based authentication
+- CSRF protection
+- Account lockout after failed attempts
+- Password validation
+- Role-based access control
+
+The authentication system is critical for:
+1. Protecting sensitive student and teacher data
+2. Managing class period assignments
+3. Controlling access to announcements and notifications
+4. Ensuring proper user session management
+
+Key Components:
+- login_view: Handles user authentication with attempt tracking
+- logout_view: Manages secure user logout
+- User model: Custom user model with role-based permissions
+
+Related Files:
+- models.py: Defines the User model
+- serializers.py: Handles data serialization
+- urls.py: Maps URLs to these views
+"""
+
 from django.contrib.auth import authenticate, login, logout
 from django.utils import timezone
 from django.conf import settings

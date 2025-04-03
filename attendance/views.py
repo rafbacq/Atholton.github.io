@@ -1,3 +1,48 @@
+"""
+API Views for the Atholton High School Raider Time Management System.
+
+This module implements the REST API endpoints for managing student attendance,
+class periods, and announcements. The views provide:
+
+1. Student Management:
+   - List and filter students
+   - Student detail views
+   - Period assignments
+   - Theme preferences
+   - Communication settings
+
+2. Class Period Management:
+   - List available periods
+   - Room capacity tracking
+   - Teacher assignments
+   - Enrollment management
+   - Availability checking
+
+3. Announcement System:
+   - Create and list announcements
+   - Teacher-specific announcements
+   - School-wide notifications
+   - Timestamp tracking
+
+4. Features:
+   - Pagination for all list views
+   - Filtering and search
+   - Role-based access control
+   - Error handling
+   - Response formatting
+
+Security:
+   - Authentication required
+   - CSRF protection
+   - Role validation
+   - Data access controls
+
+Related Files:
+   - models.py: Database models
+   - serializers.py: Data serialization
+   - urls.py: URL routing
+"""
+
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator
 from rest_framework.decorators import api_view, permission_classes

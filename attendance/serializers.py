@@ -1,3 +1,41 @@
+"""
+Serializers for the Atholton High School Raider Time Management System.
+
+This module handles the conversion of complex data types (models, querysets)
+to and from Python native datatypes that can be rendered into JSON or other
+content types. It provides:
+
+1. Model Serializers:
+   - StudentSerializer: Full student data with teacher info
+   - ClassPeriodSerializer: Class period data with availability
+   - AnnouncementSerializer: Announcement data with teacher details
+   - NotificationSerializer: Basic notification data
+   - UserSerializer: Basic user information
+
+2. Nested Serialization:
+   - Teacher information within student data
+   - Room availability within class periods
+   - Timestamp formatting for announcements
+   - User role handling
+
+3. Validation:
+   - Field validation for all models
+   - Custom validation for capacity and enrollment
+   - Role-based field access control
+   - Data type conversion and formatting
+
+4. Features:
+   - Calculated fields (e.g., available_seats)
+   - Conditional field inclusion
+   - Related object handling
+   - Many-to-many relationship support
+
+Related Files:
+   - models.py: Database models
+   - views.py: API views using these serializers
+   - urls.py: URL routing
+"""
+
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
 from .models import Student, Announcement, Notification, ClassPeriod
