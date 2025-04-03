@@ -26,7 +26,7 @@ npm -v   # Check npm version
 2. Install dependencies:
 ```bash
 cd frontend
-npm install --legacy-peer-deps
+npm install 
 ```
 
 ### Development
@@ -114,7 +114,7 @@ python manage.py collectstatic     # Collect static files
 cd backend
 python manage.py runserver
 ```
-3. Start Next.js frontend:
+3. Start localhost:
 ```bash
 cd frontend
 npm run dev
@@ -166,10 +166,6 @@ npm run dev
 
 ## Testing
 ```bash
-# Frontend
-cd frontend
-npm test
-
 # Backend
 cd backend
 python manage.py test
