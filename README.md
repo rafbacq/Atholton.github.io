@@ -130,16 +130,19 @@ python manage.py runserver
 
 ## Roadmap
 
-### Phase 1: Core Models
-- [ ] Create RaiderTimeSession model
-- [ ] Create Attendance tracking model
-- [ ] Create Room management model
-- [ ] Add model relationships
-- [ ] Write model tests
+### Phase 1: Core Models 
+- [x] Create RaiderTimeSession model
+- [x] Create Attendance tracking model
+- [x] Create Room management model
+- [x] Add model relationships
+- [x] Write model tests
 
-### Phase 2: Authentication
-- [ ] Implement school SSO integration
-- [ ] Create login flow
+### Phase 2: Authentication (In Progress)
+- [x] Implement Google OAuth2 integration
+- [x] Set up domain restriction (@inst.hcpss.org)
+- [x] Create login UI with Google Sign-In
+- [ ] Complete backend account verification
+- [ ] Add admin notification system
 - [ ] Set up role-based routing
 - [ ] Add authentication tests
 
@@ -155,6 +158,7 @@ python manage.py runserver
 - [ ] Registration system
 - [ ] Schedule viewer
 - [ ] Attendance history
+- [ ] Room location information
 
 ### Phase 5: Admin Tools
 - [ ] User management interface
@@ -224,7 +228,120 @@ pip install --upgrade -r requirements.txt  # Update all packages
   - Isolation from production data
 
 ### Authentication System
-- I think it's now (somewhat) configured for school account integration
-- Disabled email functionality since not needed
-- Set up console backend for development logging
-- Ready for school SSO integration
+- Google OAuth2 integration with NextAuth.js in frontend
+- Domain restriction to @inst.hcpss.org emails
+- JWT-based session management with 30-day persistence
+- Secure error handling with custom error pages
+- Admin notification system for unrecognized logins
+
+### OAuth Integration
+- Frontend (Next.js):
+  - NextAuth.js handles Google OAuth flow
+  - JWT strategy for session management
+  - Custom callbacks for domain verification
+  - Automatic token refresh handling
+  - Session persistence for 30 days
+
+- Backend (Django):
+  - Django OAuth Toolkit for token validation
+  - Custom middleware for JWT verification
+  - Role-based permission system
+  - Session synchronization with frontend
+  - Secure token storage in PostgreSQL
+
+- Security Features:
+  - CORS configuration for API endpoints
+  - CSRF protection on all routes
+  - Secure cookie handling
+  - Environment-based credentials
+  - Rate limiting on auth endpoints
+
+### OAuth Client Flow (How it works and how i set it up)
+## Required Google OAuth Credentials
+For development, we use a shared set of Google OAuth credentials for the team.
+
+1. Create a `.env.local` file in your frontend directory:
+```env
+GOOGLE_CLIENT_ID=your-client-id
+GOOGLE_CLIENT_SECRET=your-client-secret
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your-nextauth-secret
+```
+
+2. Get the credentials:
+   - **Team Members**: Message Tiffany for the OAuth credentials
+   - These are already set up and working with the HCPSS domain
+
+3. Security Rules:
+   - Keep credentials in `.env.local` only
+   - Never commit them to git
+   - Don't share outside the team
+   - Each developer uses the same credentials locally
+
+Alternative: Setting up your own credentials (only if needed):
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Create a new project or select existing
+3. Enable Google OAuth2 API
+4. Create OAuth 2.0 Client ID credentials
+5. Add authorized redirect URIs:
+   - `http://localhost:3000/api/auth/callback/google` (development)
+   - `https://your-production-url/api/auth/callback/google` (production)
+
+## I included the OAuth Client ID and Client Secret environment variables in an env file, let me know if you need to see it.
+1. **Initial Setup**:
+   ```typescript
+   GoogleProvider({
+     clientId: process.env.CLIENT_ID!,
+     clientSecret: process.env.CLIENT_SECRET!,
+   })
+   ```
+   - Configured in `/app/api/auth/[...nextauth]/route.ts`
+   - Uses environment variables for credentials
+   - Handles OAuth2 protocol automatically
+
+2. **Authentication Flow**:
+   - User clicks "Sign in with Google"
+   - Redirects to Google consent screen
+   - Google returns auth code
+   - NextAuth exchanges code for tokens
+   - Verifies @inst.hcpss.org domain
+
+3. **Token Management**:
+   ```typescript
+   async jwt({ token, account }) {
+     if (account) {
+       token.userRole = "pending";
+     }
+     return token;
+   }
+   ```
+   - Creates JWT with custom claims
+   - Stores user role information
+   - Manages token refresh
+   - 30-day session persistence
+
+4. **Session Handling**:
+   ```typescript
+   async session({ session, token }) {
+     session.user.role = token.userRole;
+     return session;
+   }
+   ```
+   - Syncs JWT data with session
+   - Provides role-based access
+   - Maintains user context
+   - Handles session expiry
+
+5. **Security Features**:
+   - Domain verification
+   - CSRF protection
+   - Secure cookie storage
+   - HTTP-only cookies
+   - Automatic token rotation
+
+### Backend Integration
+- Django OAuth Toolkit for token validation
+- Custom middleware for JWT verification
+- Role-based permission system
+- Session synchronization with frontend
+- Secure token storage in PostgreSQL
