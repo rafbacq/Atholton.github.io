@@ -9,7 +9,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Atholton High School Raider Time",
   description: "Raider Time management system for Atholton High School",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -25,7 +24,3 @@ export default function RootLayout({
     </html>
   )
 }
-
-
-
-import './globals.css'
