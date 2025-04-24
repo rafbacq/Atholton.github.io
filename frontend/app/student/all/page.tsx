@@ -1,27 +1,58 @@
 "use client"
 
-import { NavigationBar } from "@/components/navigation-bar"
+import { MainNav } from "@/components/main-nav"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Search } from "lucide-react"
+import { useEffect } from "react"
 
 export default function StudentAllPage() {
+  // Load the Platypi font style if needed
+  useEffect(() => {
+    // This font loading script is only executed client-side
+    const loadFont = async () => {
+      if (typeof window !== "undefined") {
+        const style = document.createElement("style")
+        style.textContent = `
+          @font-face {
+            font-family: 'Platypi';
+            src: url('/fonts/Platypi-Bold.woff2') format('woff2');
+            font-weight: 700;
+            font-style: normal;
+            font-display: swap;
+          }
+        `
+        document.head.appendChild(style)
+      }
+    }
+
+    loadFont()
+  }, [])
+
   const teachers = [
-    { name: "Gabby", room: "B125" },
-    { name: "Gabby", room: "A201" },
-    { name: "Gabby", room: "C304" },
-    { name: "Gabby", room: "D105" },
-    { name: "Gabby", room: "B127" },
+    { name: "Ms. Rhee", room: "B125" },
+    { name: "Mr. Johnson", room: "A201" },
+    { name: "Mrs. Davis", room: "C304" },
+    { name: "Dr. Smith", room: "D105" },
+    { name: "Ms. Wilson", room: "B127" },
   ]
 
   return (
-    <main className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <NavigationBar userType="student" currentDate="MARCH 14, 2025" />
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <MainNav userType="student" />
 
-      <div className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-raider-green dark:text-green-400 mb-2">ATHOLTON HIGH SCHOOL</h1>
-          <h2 className="text-xl text-gray-600 dark:text-gray-400">RAIDER TIME HOME PAGE</h2>
+      <main className="container mx-auto px-4 py-8">
+        <div className="mb-8 bg-gray-50 dark:bg-gray-900 py-6 px-4 rounded-md">
+          <div className="text-center">
+            {/* First row: ATHOLTON HIGH SCHOOL */}
+            <h1 className="school-title-gradient mb-0 leading-none">ATHOLTON HIGH SCHOOL</h1>
+
+            {/* Second row: RAIDER TIME HOME PAGE */}
+            <div className="flex flex-wrap justify-center items-center">
+              <h2 className="school-title-green leading-none">RAIDER TIME</h2>
+              <h2 className="school-title-outline leading-none ml-3">HOME PAGE</h2>
+            </div>
+          </div>
         </div>
 
         <div className="grid gap-8">
@@ -108,7 +139,7 @@ export default function StudentAllPage() {
             </div>
           </section>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   )
 }

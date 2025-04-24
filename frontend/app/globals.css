@@ -27,24 +27,24 @@
   }
 
   .dark {
-    --background: 0 0% 10%;
+    --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 15%;
+    --card: 0 0% 3.9%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 15%;
+    --popover: 0 0% 3.9%;
     --popover-foreground: 0 0% 98%;
     --primary: 142 95% 17%;
     --primary-foreground: 0 0% 98%;
     --secondary: 60 15% 47%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 20%;
+    --muted: 0 0% 14.9%;
     --muted-foreground: 0 0% 63.9%;
     --accent: 225 55% 47%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 79% 36%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
     --ring: 142 95% 17%;
   }
 }
@@ -57,56 +57,141 @@
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
+
+  /* Font Face for Platypi or a fallback */
+  @font-face {
+    font-family: "Platypi";
+    src: url("/fonts/Platypi-Bold.woff2") format("woff2"), local("Arial Black"), local("Impact");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+  }
 }
 
-/* Add monospace font for dates */
+/* Custom utility classes */
+@layer components {
+  .raider-nav {
+    @apply flex items-center justify-between bg-raider-green dark:bg-raider-darkgray text-white px-4 py-1 text-xs transition-colors duration-300;
+  }
+
+  .raider-nav-left {
+    @apply flex items-center gap-2;
+  }
+
+  .raider-nav-right {
+    @apply flex items-center gap-2;
+  }
+
+  .raider-button-green {
+    @apply bg-raider-green text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
+  }
+
+  .raider-button-red {
+    @apply bg-raider-red text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
+  }
+
+  .raider-button-blue {
+    @apply bg-raider-blue text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
+  }
+
+  .bell-schedule-item {
+    @apply text-xs py-0.5;
+  }
+
+  /* School Title Styles */
+  .school-title-gradient {
+    font-family: "Platypi", "Arial Black", Impact, sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 100%;
+    -webkit-text-stroke: 2px #000;
+    background: linear-gradient(90deg, #52b557 0%, #02542d 44.08%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0.1em 0;
+  }
+
+  .school-title-green {
+    font-family: "Platypi", "Arial Black", Impact, sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 100%;
+    color: #02542d;
+    -webkit-text-stroke: 2px #000;
+  }
+
+  .school-title-outline {
+    font-family: "Platypi", "Arial Black", Impact, sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 100%;
+    color: #fff;
+    -webkit-text-stroke: 2px #02542d;
+  }
+}
+
+/* Animation utilities */
+@layer utilities {
+  .animate-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Add stroke text utility */
+  .stroke-text {
+    -webkit-text-stroke: 1.5px currentColor;
+    paint-order: stroke fill;
+  }
+}
+
+/* Font settings */
 .font-mono {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.raider-nav {
-  @apply flex items-center justify-between bg-raider-green dark:bg-raider-darkgray text-white px-4 py-1 text-xs transition-colors duration-300;
+/* Title styling for school headers */
+.school-title {
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  font-weight: 800;
+  letter-spacing: -0.5px;
 }
 
-.raider-nav-left {
-  @apply flex items-center gap-2;
+/* Outline text effect for "HOME PAGE" */
+.outline-text {
+  -webkit-text-stroke: 1.5px #244f26;
+  color: white;
+  paint-order: stroke fill;
 }
 
-.raider-nav-right {
-  @apply flex items-center gap-2;
+.dark .outline-text {
+  -webkit-text-stroke: 1.5px #16a34a;
 }
 
-.raider-button-green {
-  @apply bg-raider-green text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
-}
-
-.raider-button-red {
-  @apply bg-raider-red text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
-}
-
-.raider-button-blue {
-  @apply bg-raider-blue text-white px-3 py-1 text-xs rounded-sm hover:bg-opacity-90 transition-colors;
-}
-
-.bell-schedule-item {
-  @apply text-xs py-0.5;
-}
-
-/* Animation for mobile menu */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Responsive adjustments for school title */
+@media (max-width: 768px) {
+  .school-title-gradient,
+  .school-title-green,
+  .school-title-outline {
+    font-size: 2.5rem;
   }
 }
 
-.animate-in {
-  animation-name: fade-in;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-  animation-fill-mode: both;
+/* Fix layout for mobile */
+@media (max-width: 640px) {
+  .school-title-gradient,
+  .school-title-green,
+  .school-title-outline {
+    font-size: 2rem;
+  }
 }
